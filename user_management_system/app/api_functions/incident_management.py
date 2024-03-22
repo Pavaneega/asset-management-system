@@ -8,7 +8,7 @@ from instance.dbconfig import base_url
 from app.utils import current_time,password_hash,current_time
 timestamp = current_time.get_current_epoc_time()
 import re
-import request
+# import request
 import requests
 
 from sqlalchemy.exc import IntegrityError
@@ -28,7 +28,7 @@ def api_create_incident(user_id):
         data={"incident_id":incident_id}
         #return data,status
     except Exception as ex:
-        print ex
+        print (ex)
         status = 500
         data = "An Unexpected error occured in our Servers. Please try again"
     finally:
@@ -61,7 +61,7 @@ def ticket_creation(data):
         data = "An incident with Incident id " + new_incident_id + " is  created and assigned to the following users " + following_users_str + " "
         status = 201
     except Exception as ex:
-        print ex
+        print (ex)
         data = "An unexpected error occured in our servers. Please try again."
         status = 500
     finally:

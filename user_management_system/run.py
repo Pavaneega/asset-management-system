@@ -207,11 +207,11 @@ def ticket_accept():
         return make_response(jsonify(data=data), status)
 
 
-# @app.route("/detail/", methods = ['GET'])
-# def detail(user_id=2):
+@app.route("/detail/", methods = ['GET'])
+def detail(user_id=2):
 # 	detail = mongo.db.users
 # 	user = detail.insert_one({"user_id":user_id})
-# 	return "success"
+	return "success"
 
 
 

@@ -7,7 +7,7 @@ from bson import json_util
 from app.utils import current_time,password_hash,current_time
 timestamp = current_time.get_current_epoc_time()
 import re
-import request
+#import request
 import requests
 
 def check_form_active_or_inactive(fn):
@@ -23,7 +23,7 @@ def check_form_active_or_inactive(fn):
                 return "Please,Make inactive before adding Group or Chanel to the form and then modify!!!",401
         else:
             return "please provide correct form_id",404
-    _wrap.func_name = fn.func_name
+ #   _wrap.func_name = fn.func_name
     return _wrap
 
 def form_permission(form_id,permission_id):
@@ -90,7 +90,7 @@ def delete_group_to_form(form_id,data):
         #return data, 200
         status=200
     except Exception as ex:
-        print ex
+        print (ex)
         status=500
         data="An unexpected error occurred in our Servers. Please try again"
     finally:
@@ -100,14 +100,14 @@ def delete_group_to_form(form_id,data):
 def get_groups_forms(form_id):
     try:
         formapp_table=mongo.db.forms
-        print form_id
+        print (form_id)
         mapped_groups=formapp_table.find({'form_id':form_id},{'authorized_groups':1})
-        print mapped_groups
+        print (mapped_groups)
         data=[json.loads(json.dumps(item,default=json_util.default)) for item in mapped_groups]
         status=200
         #return data,200
     except Exception as ex:
-        print ex
+        print (ex)
         status=500
         data="An unexpected error occurred in our Servers. Please try again"
     finally:
@@ -148,7 +148,7 @@ def delete_chanel_from_form(form_id,data):
         #return data, 200
         status=200
     except Exception as ex:
-        print ex
+        print (ex)
         status=500
         data="An unexpected error occurred in our Servers. Please try again"
     finally:
@@ -158,14 +158,14 @@ def delete_chanel_from_form(form_id,data):
 def get_chanel_forms(form_id):
     try:
         formapp_table=mongo.db.forms
-        print form_id
+        print (form_id)
         mapped_chanels=formapp_table.find({'form_id':form_id},{'authorized_chanels':1})
-        print mapped_chanels
+        print (mapped_chanels)
         data=[json.loads(json.dumps(item,default=json_util.default)) for item in mapped_chanels]
         status=200
         #return data,200
     except Exception as ex:
-        print ex
+        print (ex)
         status=500
         data="An unexpected error occurred in our Servers. Please try again"
     finally:
